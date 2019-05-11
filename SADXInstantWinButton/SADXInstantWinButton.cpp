@@ -18,11 +18,14 @@ extern "C"
 		case GameModes_Trial:
 			if (ControllerPointers[0]->PressedButtons & Buttons_X)
 			{
-				if (ControllerPointers[0]->PressedButtons & Buttons_B)
-					SetOpponentRaceVictory();
-				else
-					SetTailsRaceVictory();
-				LoadLevelResults();
+				if (CurrentLevel < LevelIDs_StationSquare || CurrentLevel == LevelIDs_SandHill)
+				{
+					if (ControllerPointers[0]->PressedButtons & Buttons_B)
+						SetOpponentRaceVictory();
+					else
+						SetTailsRaceVictory();
+					LoadLevelResults();
+				}
 			}
 			break;
 		}
